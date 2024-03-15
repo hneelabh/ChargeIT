@@ -60,6 +60,8 @@ function Cancel() {
         <div className="text-center mb-6">
           <p className="text-lg font-semibold">My Bookings</p>
         </div>
+
+        {/* conditional statement to check booking done or not  */}
         {bookings.length > 0 ? (
           bookings.map((booking) => (
             <div key={booking.id} className="mb-4 p-4 bg-gray-100 rounded-lg">
@@ -95,6 +97,7 @@ function Cancel() {
         ) : (
           <p>No bookings found.</p>
         )}
+        {/* redirect to home button */}
         <div className="text-center my-4">
           <button
             onClick={redirectToHome}
