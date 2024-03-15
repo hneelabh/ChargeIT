@@ -10,6 +10,9 @@ import Logout from './components/Logout';
 import Signup from './components/Signup';
 import Hero from './components/Hero'
 import Services from './components/Services';
+import Book from "./components/Book";
+import BookDate from "./components/BookDate";
+import Cancel from "./components/Cancel";
 
 const App = () => {
     // setting dark theme
@@ -47,6 +50,9 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/booking" element={<Book />} />
+            <Route path="/book" element={<BookDate />} />
+            <Route path="/cancel" element={<Cancel />} />
             <Route path="/" element={<>
               <Navbar theme={theme} setTheme={setTheme} />
               <Hero theme={theme} />
