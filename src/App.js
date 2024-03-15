@@ -14,8 +14,6 @@ import Book from "./components/Book";
 import BookDate from "./components/BookDate";
 import Cancel from "./components/Cancel";
 import BatterySwap from './components/BatterySwap';
-import BatteryOne from "./components/BatteryOne";
-import BatteryInst from './components/BatteryInst';
 
 const App = () => {
     // setting dark theme
@@ -57,8 +55,6 @@ const App = () => {
             <Route path="/book" element={<BookDate />} />
             <Route path="/cancel" element={<Cancel />} />
             <Route path="/BatterySwap" element={<BatterySwap />} />
-            <Route path="/Battery" element={<BatteryOne />} />
-            <Route path="/BatteryInst" element={<BatteryInst />} />
 
             <Route path="/" element={<>
               <Navbar theme={theme} setTheme={setTheme} />

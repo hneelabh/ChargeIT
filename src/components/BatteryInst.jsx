@@ -10,8 +10,10 @@ import Screen from "../images/screen.jpeg"
 
 function BatteryInst() {
   return (
-    <div className="antialiased bg-black text-gray-800 pb-16"> {/* Added pb-16 for bottom padding */}
-        <h1 className='text-center font-bold mb-8 mt-8 text-5xl underline text-yellow-500'>Instructions for Battery Swap</h1>
+    <div name="instructions">
+    <div className="antialiased bg-black text-gray-800 pb-16 pt-8"> {/* Added pt-8 for top padding */}
+      <div className="container mx-auto px-6 flex flex-col space-y-8">
+        <h1 className='text-center font-bold mb-8 text-5xl underline text-yellow-500'>Instructions for Battery Swap</h1>
       <div className="relative container mx-auto px-6 flex flex-col space-y-8">
         <div className="absolute z-0 w-2 h-full bg-yellow-200 shadow-md inset-0 left-17 md:mx-auto md:right-0 md:left-0"></div>
 
@@ -122,10 +124,9 @@ function BatteryInst() {
             </div>
           </div>
         </div>
-        
-        {/* Add more timeline items as needed */}
-        
+        </div>
       </div>
+    </div>
     </div>
   );
 }
