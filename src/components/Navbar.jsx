@@ -5,6 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Logo from "../logo.png"
 
+
 const Navbar = ({ theme, setTheme }) => {
   const [nav, setNav] = useState(false);
 
@@ -15,6 +16,7 @@ const Navbar = ({ theme, setTheme }) => {
     <nav className='fixed w-full h-[70px] flex justify-between items-center px-4 bg-primary dark:bg-dark dark:text-white z-50'>
       <div className='container md:py-0'>
         <div className='flex justify-between items-center'>
+          {/* Setting the components for navbar */}
           <div className='flex'>
           <span>
             <img src={Logo} alt="logo" style={{width: '40px'}} />
@@ -33,11 +35,6 @@ const Navbar = ({ theme, setTheme }) => {
               <li>
                 <Link className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium' to="testimonials" smooth={true} duration={500} onClick={closeMobileMenu}> TESTIMONIALS </Link>
               </li>
-              {/* <li>
-                <RouterLink to="/login" onClick={closeMobileMenu}>
-                  <button className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium'>LOGIN</button>
-                </RouterLink>
-              </li> */}
               <li>
                 <RouterLink to="/logout" onClick={closeMobileMenu}>
                   <button className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium'>ACCOUNT</button>
@@ -46,11 +43,12 @@ const Navbar = ({ theme, setTheme }) => {
             </ul>
           </div>
                 
-          {/* Hamburger Button */}
+          {/* Hamburger Button for mobile menu*/}
           <div className='md:hidden z-10 ml-auto'>
             {!nav ? <FaBars aria-expanded="false" onClick={handleClick} /> : <FaTimes aria-expanded="true" onClick={handleClick} />}
           </div>
 
+          {/* Changing the theme */}
           <div className="flex items-center gap-2 hover:cursor-pointer ml-5">
             {theme === "dark" ? (
               <BiSolidSun onClick={() => setTheme("light")} className='text-2xl' />
@@ -62,7 +60,7 @@ const Navbar = ({ theme, setTheme }) => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu onlick Hamburger*/}
       <div className={`md:hidden ${nav ? 'fixed inset-0 flex items-center justify-center bg-black bg-opacity-50' : 'hidden'}`}>
         <div className="bg-gray-300 dark:bg-gray-800 rounded-lg p-4 transform scale-90">
           <ul className='flex flex-col items-center gap-4'>
