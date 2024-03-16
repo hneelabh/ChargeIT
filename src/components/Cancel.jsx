@@ -1,16 +1,33 @@
+
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, get, remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import bgImage from "../bg.jpg";
 
 function Cancel() {
   const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
+  const [email, setEmail] = useState(null);
 
   useEffect(() => {
-    checkBookings();
+    // Set the email state whenever the user's authentication state changes
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setEmail(user.email);
+        checkBookings(user.email);
+      } else {
+        setEmail(null);
+        setBookings([]);
+      }
+    });
+
+    // Cleanup function to unsubscribe from the AuthStateChanged observer
+    return unsubscribe;
   }, []);
 
-  const checkBookings = async () => {
+  const checkBookings = async (userEmail) => {
     const db = getDatabase();
     const bookingsRef = ref(db, "bookings/");
 
@@ -19,10 +36,13 @@ function Cancel() {
 
       if (snapshot.exists()) {
         const data = snapshot.val();
-        const bookingsList = Object.keys(data).map((key) => ({
-          id: key,
-          ...data[key],
-        }));
+        const bookingsList = Object.keys(data)
+          .map((key) => ({
+            id: key,
+            ...data[key],
+          }))
+          .filter((booking) => booking.userEmail === userEmail);
+
         setBookings(bookingsList);
       }
     } catch (error) {
@@ -114,3 +134,4 @@ function Cancel() {
 }
 
 export default Cancel;
+

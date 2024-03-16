@@ -10,7 +10,7 @@ import {
   equalTo,
 } from "firebase/database";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function BookDate() {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ function BookDate() {
   const [chargingType, setChargingType] = useState("AC"); // Default value
   const [locations] = useState(["EDAPALLY", "FORT", "KALMASSERY", "VITYILLA"]);
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -41,28 +42,38 @@ function BookDate() {
         set(bookedLocationsRef, {});
       }
     });
+
+    // Set the email state whenever the user's authentication state changes
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setEmail(user.email);
+      } else {
+        setEmail(null);
+      }
+    });
+
+    // Cleanup function to unsubscribe from the AuthStateChanged observer
+    return unsubscribe;
   }, [location.search]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const auth = getAuth();
-    const currentUser = auth.currentUser;
-    const userId = currentUser ? currentUser.uid : null;
 
     if (!name || !vehicleNumber || !bookTime || !selectedLocation) {
       alert("Please fill all the fields");
     } else {
-      await checkAndWriteUserData(userId);
+      await checkAndWriteUserData();
     }
   };
 
-  const checkAndWriteUserData = async (userId) => {
+  const checkAndWriteUserData = async () => {
     const db = getDatabase();
     const bookingsRef = ref(db, "bookings");
 
-    //count for the 3 bookings
+    // Check the number of occurrences of the user's email
     const queryForUserBookings = await get(
-      query(bookingsRef, orderByChild("userId"), equalTo(userId))
+      query(bookingsRef, orderByChild("userEmail"), equalTo(email))
     );
     const existingUserBookings = queryForUserBookings.val();
     const userBookingCount = existingUserBookings
@@ -124,7 +135,7 @@ function BookDate() {
       bookingTime: bookTime,
       vehicleType: vehicleType,
       chargingType: chargingType,
-      userId: userId,
+      userEmail: email,
     });
 
     alert("Your booking has been made");
@@ -139,7 +150,7 @@ function BookDate() {
     nextDay.setDate(nextDay.getDate() + 1); // Get the date for the next day
 
     // Loop through hours from current hour to 23 (end of current day)
-    for (let hour = currentHour + 1; hour < 24; hour++) {
+    for (let hour = currentHour; hour < 24; hour++) {
       const startTime = `${hour}:00`;
       const endTime = `${hour + 1}:00`;
       options.push(`${startTime} - ${endTime}`);
