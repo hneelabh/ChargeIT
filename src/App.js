@@ -14,6 +14,9 @@ import Book from "./components/Book";
 import BookDate from "./components/BookDate";
 import Cancel from "./components/Cancel";
 import BatterySwap from './components/BatterySwap';
+import About from './components/About'
+import Testimonial from './components/Testimonials';
+import Footer from './components/Footer';
 
 const App = () => {
     // setting dark theme
@@ -61,6 +64,11 @@ const App = () => {
               <Hero theme={theme} />
               <hr></hr>
               <Services theme={theme} />
+              <hr></hr>
+              <About theme={theme}/>
+              <hr></hr>
+              <Testimonial theme={theme}/>
+              <Footer theme={theme} />
             </>} />
           </Routes>
   

@@ -14,7 +14,7 @@ const skillsData = [
   {
     name: "Swap Batteries",
     icon: <GiBattery75 className="text-5xl" />,
-    link: "/Battery",
+    link: "/BatterySwap",
     description: "Out of batteries? Get them hand to hand by depositing your empty battery at the station.",
     aosDelay: "500",
   },
