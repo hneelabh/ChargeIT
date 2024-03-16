@@ -19,6 +19,7 @@ import Testimonial from './components/Testimonials';
 import Footer from './components/Footer';
 // import Vehicle from './components/Vehicle';
 import RentanEV from './components/RentanEV';
+import BookBattery from './components/BookBattery';
 
 const App = () => {
     // setting dark theme
@@ -63,6 +64,7 @@ const App = () => {
             <Route path="/batteryswap" element={<BatterySwap />} />
             {/* <Route path="/vehicle" element={<Vehicle />} /> */}
             <Route path="/vehicle" element={<RentanEV />} />
+            <Route path="/bookBattery" element={<BookBattery />} />
 
             <Route path="/" element={<>
               <Navbar theme={theme} setTheme={setTheme} />

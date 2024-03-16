@@ -2,21 +2,21 @@ import React from "react";
 
 const testimonialData = [
   {
-    name: "Neelabh",
-    image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    name: "Matt Issac",
+    image: "https://xsgames.co/randomusers/assets/avatars/male/74.jpg",
+    description: "Charge IT's Booking slots is effortless, and their battery swap service keeps us running smoothly.",
     aosDelay: "0",
   },
   {
-    name: "Sharma",
-    image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    name: "Ryan Evans",
+    image: "https://xsgames.co/randomusers/avatar.php?g=male",
+    description: "Charge IT's innovation shines through. Predictive maintenance alerts and a startup mindset set them apart.",
     aosDelay: "300",
   },
   {
-    name: "Ghoshal",
-    image: "",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    name: "Chad Mackie",
+    image: "https://xsgames.co/randomusers/assets/avatars/male/62.jpg",
+    description: "Charge IT values collaboration. They listen, adapt quickly, and prioritize customer satisfaction.",
     aosDelay: "500",
   },
 ];
@@ -35,9 +35,7 @@ const Testimonial = () => {
               What Our Clients Say About Us
             </p>
             <p data-aos="fade-up" className="text-center sm:px-44">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis iure consectetur tempora amet.
-            </p>
+            Discover what our clients have to say about Charge IT, the small startup making big waves with innovative EV solutions:            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-black dark:text-white">
@@ -50,7 +48,7 @@ const Testimonial = () => {
               >
                 <div className="grid place-items-center ">
                   <img
-                    src="https://picsum.photos/200"
+                    src={skill.image}
                     alt=""
                     className="rounded-full w-20 h-20"
                   />
