@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firebase.js";
 import { useFormik } from "formik";
-import bg from "../bg.jpg";
 import GoogleSignInButton from "./GoogleSignInButton";
 import { useNavigate } from "react-router-dom";
-
 
 const initialValues = {
   email: "",
@@ -51,10 +49,9 @@ function Login() {
 
   return (
     <div
-      className="relative flex items-center justify-center min-h-screen"
-      style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}
+      className="relative flex bg-black items-center justify-center min-h-screen"
     >
-      <div className="max-w-md w-full py-12 px-6 bg-white opacity-70 shadow-md rounded-md">
+      <div className="max-w-md w-full py-12 px-6 bg-white shadow-md rounded-md">
         <h1 className="text-2xl font-semibold text-center mb-4">Welcome!</h1>
         <h3 className="text-lg text-gray-800 text-center mb-6">Login to <span className="font-semibold font-serif">Charge IT</span></h3>
 

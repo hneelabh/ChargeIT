@@ -8,7 +8,6 @@ import { useFormik } from "formik";
 import { signUpSchema } from "../Schemas";
 import { useNavigate } from "react-router-dom";
 import GoogleSignInButton from "./GoogleSignInButton";
-import bg from "../bg.jpg";
 
 const initialValues = {
   name: "",
@@ -57,10 +56,9 @@ function Signup() {
 
   return (
     <div
-      className="min-h-screen bg-cover flex items-center justify-center"
-      style={{ backgroundImage: `url(${bg})` }}
+      className="min-h-screen bg-cover bg-black flex items-center justify-center"
     >
-      <div className="max-w-md w-full py-12 px-6 bg-white shadow-md opacity-70 rounded-md">
+      <div className="max-w-md w-full py-12 px-6 bg-white shadow-md rounded-md">
         <h1 className="text-3xl font-bold text-center mb-4">Welcome!</h1>
         <h3 className="text-lg text-gray-800 text-center mb-8">
           Please enter your details below

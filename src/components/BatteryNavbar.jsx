@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Logo from "../logo.png"
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const BatteryNavbar = () => {
@@ -19,7 +20,9 @@ const BatteryNavbar = () => {
           <span>
             <img src={Logo} alt="logo" style={{width: '40px'}} />
           </span>
-            <h1 className='text-3xl ml-2 font-bold font-serif'>Charge IT</h1>
+          <RouterLink to="/" onClick={closeMobileMenu}>
+            <button> <h1 className='text-3xl ml-2 font-bold font-serif'>Charge IT</h1> </button>
+          </RouterLink>
           </div>
 
           <div className="hidden md:flex gap-4 ml-auto items-center">
