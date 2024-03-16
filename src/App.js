@@ -14,6 +14,7 @@ import Book from "./components/Book";
 import BookDate from "./components/BookDate";
 import Cancel from "./components/Cancel";
 import BatterySwap from './components/BatterySwap';
+import BookaSlot from './components/BookaSlot';
 import About from './components/About'
 import Testimonial from './components/Testimonials';
 import Footer from './components/Footer';
@@ -54,10 +55,11 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/booking" element={<Book />} />
+            {/* <Route path="/booking" element={<Book />} /> */}
             <Route path="/book" element={<BookDate />} />
+            <Route path="/booking" element={<BookaSlot />} />
             <Route path="/cancel" element={<Cancel />} />
-            <Route path="/BatterySwap" element={<BatterySwap />} />
+            <Route path="/batteryswap" element={<BatterySwap />} />
 
             <Route path="/" element={<>
               <Navbar theme={theme} setTheme={setTheme} />

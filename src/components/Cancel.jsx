@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, get, remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-import bgImage from "../bg.jpg";
 
 function Cancel() {
   const navigate = useNavigate();
@@ -51,57 +50,60 @@ function Cancel() {
   };
 
   return (
-    <div
-      className="relative flex items-center justify-center min-h-screen"
-      style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover" }}
-    >
-      <div className="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
-      <div className="mx-auto max-w-lg py-4 px-8 bg-white opacity-80 shadow-lg rounded-lg relative z-10">
+    <div className="relative flex items-center justify-center min-h-screen bg-black">
+      <div className="mx-auto w-full max-w-screen-xl py-4 px-8 shadow-lg rounded-lg relative z-10 bg-black">
         <div className="text-center mb-6">
-          <p className="text-lg font-semibold">My Bookings</p>
+          <p className="text-5xl text-white mb-8 font-semibold">My Bookings</p>
         </div>
 
         {/* conditional statement to check booking done or not  */}
-        {bookings.length > 0 ? (
-          bookings.map((booking) => (
-            <div key={booking.id} className="mb-4 p-4 bg-gray-100 rounded-lg">
-              <p className="text-xl font-bold mb-2">You have a booking with:</p>
-              <p className="text-lg">
-                <strong>Name:</strong> {booking.name}
-              </p>
-              <p className="text-lg">
-                <strong>Vehicle ID:</strong> {booking.vehicleNumber}
-              </p>
-              <p className="text-lg">
-                <strong>Location:</strong> {booking.selectedLocation}
-              </p>
-              <p className="text-lg">
-                <strong>Time:</strong> {booking.bookingTime}
-              </p>
-              <p className="text-lg">
-                <strong>Vehicle Type:</strong> {booking.vehicleType}
-              </p>
-              <p className="text-lg">
-                <strong>Charging Type:</strong> {booking.chargingType}
-              </p>
-              <div className="mt-2 text-center">
-                <button
-                  onClick={() => handleCancelBooking(booking.id)}
-                  className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 focus:outline-none"
-                >
-                  Cancel Booking
-                </button>
+        <div className="flex flex-wrap justify-center -mx-4">
+          {bookings.length > 0 ? (
+            bookings.map((booking) => (
+              <div
+                key={booking.id}
+                className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 px-4"
+              >
+                <div className="p-4 bg-gray-900 text-white rounded-lg">
+                  <p className="text-xl font-bold mb-2">You have a booking with:</p>
+                  <p className="text-lg">
+                    <strong>Name:</strong> {booking.name}
+                  </p>
+                  <p className="text-lg">
+                    <strong>Vehicle ID:</strong> {booking.vehicleNumber}
+                  </p>
+                  <p className="text-lg">
+                    <strong>Location:</strong> {booking.selectedLocation}
+                  </p>
+                  <p className="text-lg">
+                    <strong>Time:</strong> {booking.bookingTime}
+                  </p>
+                  <p className="text-lg">
+                    <strong>Vehicle Type:</strong> {booking.vehicleType}
+                  </p>
+                  <p className="text-lg">
+                    <strong>Charging Type:</strong> {booking.chargingType}
+                  </p>
+                  <div className="mt-2 text-center">
+                    <button
+                      onClick={() => handleCancelBooking(booking.id)}
+                      className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 focus:outline-none"
+                    >
+                      Cancel Booking
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p>No bookings found.</p>
-        )}
+            ))
+          ) : (
+            <p className="text-center w-full">No bookings found.</p>
+          )}
+        </div>
         {/* redirect to home button */}
         <div className="text-center my-4">
           <button
             onClick={redirectToHome}
-            className="text-gray-600 underline px-4 py-2 rounded focus:outline-none"
+            className="text-gray-500 underline px-4 py-2 rounded focus:outline-none"
           >
             Back to Homepage
           </button>
