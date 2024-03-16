@@ -17,7 +17,8 @@ import BookaSlot from './components/BookaSlot';
 import About from './components/About'
 import Testimonial from './components/Testimonials';
 import Footer from './components/Footer';
-import Vehicle from './components/Vehicle';
+// import Vehicle from './components/Vehicle';
+import RentanEV from './components/RentanEV';
 
 const App = () => {
     // setting dark theme
@@ -60,7 +61,8 @@ const App = () => {
             <Route path="/booking" element={<BookaSlot />} />
             <Route path="/cancel" element={<Cancel />} />
             <Route path="/batteryswap" element={<BatterySwap />} />
-            <Route path="/vehicle" element={<Vehicle />} />
+            {/* <Route path="/vehicle" element={<Vehicle />} /> */}
+            <Route path="/vehicle" element={<RentanEV />} />
 
             <Route path="/" element={<>
               <Navbar theme={theme} setTheme={setTheme} />

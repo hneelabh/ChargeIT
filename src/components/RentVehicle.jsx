@@ -83,6 +83,7 @@ function Vehicle() {
 
   return (
     <div
+      name='vehicles'
       className="flex flex-wrap justify-center p-4 min-h-screen bg-black"
     >
       <div className="w-full text-center text-green-100 text-3xl font-bold mt-3 mb-5">
