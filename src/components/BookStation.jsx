@@ -77,7 +77,7 @@ function BookStation() {
           {users.map((user) => (
             <div
               key={user.id}
-              className="rounded overflow-hidden opacity-70 shadow-lg bg-white"
+              className="rounded overflow-hidden shadow-lg bg-white"
             >
               <img
                 className="w-full h-48 object-cover"

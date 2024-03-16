@@ -10,7 +10,6 @@ import Logout from './components/Logout';
 import Signup from './components/Signup';
 import Hero from './components/Hero'
 import Services from './components/Services';
-import Book from "./components/Book";
 import BookDate from "./components/BookDate";
 import Cancel from "./components/Cancel";
 import BatterySwap from './components/BatterySwap';
@@ -18,6 +17,7 @@ import BookaSlot from './components/BookaSlot';
 import About from './components/About'
 import Testimonial from './components/Testimonials';
 import Footer from './components/Footer';
+import Vehicle from './components/Vehicle';
 
 const App = () => {
     // setting dark theme
@@ -60,6 +60,7 @@ const App = () => {
             <Route path="/booking" element={<BookaSlot />} />
             <Route path="/cancel" element={<Cancel />} />
             <Route path="/batteryswap" element={<BatterySwap />} />
+            <Route path="/vehicle" element={<Vehicle />} />
 
             <Route path="/" element={<>
               <Navbar theme={theme} setTheme={setTheme} />
