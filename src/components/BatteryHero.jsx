@@ -1,6 +1,7 @@
 import React from "react";
 import BatterySwapImg from "../battery-swap.jpg";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const BatteryHero = () => {
   return (
@@ -41,7 +42,14 @@ const BatteryHero = () => {
             >
               Battery Swapping Feature!
             </p>
+            <Link 
+            data-aos="fade-up"
+            data-aos-delay="600"
+            className='inline-block py-2 px-6 rounded-full mt-8 text-black cursor-pointer bg-yellow-500 hover:bg-yellow-700 transition-colors-duration-500' to="/bookBattery" smooth={true} duration={500}> Emergency Battery Request 
+          </Link>
           </div>
+
+
         </div>
       </div>
     </div>

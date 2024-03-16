@@ -3,6 +3,8 @@ import { db } from "../firebase-config.js";
 import { collection, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firebase.js";
+import { Link as RouterLink } from 'react-router-dom';
+
 
 import olas1pro from "../vehicle_img/olas1pro.jpg";
 import olas1x from "../vehicle_img/olas1x.jpg";
@@ -111,11 +113,14 @@ function Vehicle() {
                 Vehicle Details
               </button>
               {isLoggedIn ? (
+                <RouterLink to="https://shazam-08.github.io/maps/">
                   <button
                     className="float-right bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full"
                   >
                     Book Now
-                  </button>
+                  </button>                  
+                </RouterLink>
+                  
                 ) : (
                   <p>Please log in or sign up to book a slot</p>
                 )}
