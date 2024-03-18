@@ -25,6 +25,10 @@ function Login() {
 
   const navigate = useNavigate();
 
+  const redirectToSignup = () => {
+    navigate("/signup");
+  };
+
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
@@ -99,7 +103,12 @@ function Login() {
             <GoogleSignInButton />
         </div>
 
-        <p className="text-center text-gray-700 text-sm">New User? <a className="text-green-700 hover:text-green-500" href="/signup">Sign Up</a></p>
+        {/* <p className="text-center text-gray-700 text-sm">New User? <a className="text-green-700 hover:text-green-500" href="/signup">Sign Up</a></p> */}
+        <p className="text-center text-gray-700 text-sm">New User?
+          <button onClick={redirectToSignup} className="hover:text-green-500 ml-1 text-green-700 hover:underline">
+            Sign Up
+          </button>
+        </p>
 
       </div>
     </div>
