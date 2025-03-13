@@ -26,6 +26,10 @@ function Logout() {
     navigate("/cancel");
   };
 
+  const redirectToHistory = () => {
+    navigate("/history"); // New function to navigate to history
+  };
+
   const redirectToLogin = () => {
     navigate("/login");
   };
@@ -35,32 +39,49 @@ function Logout() {
   }
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen bg-black"    >
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
       <div className="bg-white px-6 py-8 rounded-md shadow-lg">
-        <h1 className="text-3xl font-bold mb-6">Hello fellow EV-Savvy people!</h1>
+        <h1 className="text-3xl font-bold mb-6">
+          Hello fellow EV-Savvy people!
+        </h1>
 
         {user ? (
           <div className="text-center">
             <p className="mb-4">You are currently logged in as {user.email}</p>
+
             <button
               onClick={redirectToMyBooking}
               className="bg-green-700 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline mr-4"
             >
               My Booking
             </button>
+
+            <button
+              onClick={redirectToHistory}
+              className="bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline mr-4"
+            >
+              Booking History
+            </button>
+
             <button
               onClick={logout}
               className="bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
             >
               Logout
             </button>
-
           </div>
         ) : (
           <div className="text-center text-xl">
-            <p className="mb-4">Click <button onClick={redirectToLogin}
-              className="hover:text-green-500 text-green-700 underline"> here </button> to login</p>
+            <p className="mb-4">
+              Click{" "}
+              <button
+                onClick={redirectToLogin}
+                className="hover:text-green-500 text-green-700 underline"
+              >
+                here
+              </button>{" "}
+              to login
+            </p>
           </div>
         )}
       </div>

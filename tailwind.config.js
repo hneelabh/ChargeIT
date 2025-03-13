@@ -16,7 +16,7 @@ export default {
     },
     extend: {
       colors:{
-        primary: "#86EFAC",
+        primary: "#5df594",
         dark: "#012f1f",
       },
       inset:{

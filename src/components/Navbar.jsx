@@ -17,24 +17,32 @@ const Navbar = ({ theme, setTheme }) => {
       <div className='container md:py-0'>
         <div className='flex justify-between items-center'>
           {/* Setting the components for navbar */}
-          <div className='flex'>
+
           <span>
-            <img src={Logo} alt="logo" style={{width: '40px'}} />
+          <RouterLink to="/" onClick={closeMobileMenu}>
+                
+                  <button className='py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium flex'><img src={Logo} alt="logo" style={{width: '40px'}} /><h1 className='text-3xl ml-2 font-bold font-serif'>Charge IT</h1></button>
+                </RouterLink>
           </span>
-            <h1 className='text-3xl ml-2 font-bold font-serif'>Charge IT</h1>
-          </div>
 
           <div className="hidden md:flex gap-4 ml-auto items-center">
             <ul className='flex items-center gap-6 py-4'>
               <li>
-                <Link className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium' to="booking" smooth={true} duration={500} onClick={closeMobileMenu}> SERVICES </Link>
+                <RouterLink to="/services" onClick={closeMobileMenu}>
+                  <button className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium'>SERVICES</button>
+                </RouterLink>
               </li>
               <li>
-                <Link className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium' to="about" smooth={true} duration={500} onClick={closeMobileMenu}> ABOUT </Link>
+                <RouterLink to="/about" onClick={closeMobileMenu}>
+                  <button className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium'>ABOUT</button>
+                </RouterLink>
               </li>
               <li>
-                <Link className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium' to="testimonials" smooth={true} duration={500} onClick={closeMobileMenu}> TESTIMONIALS </Link>
+                <RouterLink to="/team" onClick={closeMobileMenu}>
+                  <button className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium'>THE TEAM</button>
+                </RouterLink>
               </li>
+
               <li>
                 <RouterLink to="/logout" onClick={closeMobileMenu}>
                   <button className='inline-block py-2 hover:border-b-2 hover:text-green-700 hover:border-green-700 transition-colors-duration-500 hover:cursor-pointer text-lg font-medium'>ACCOUNT</button>
@@ -68,10 +76,10 @@ const Navbar = ({ theme, setTheme }) => {
               <Link onClick={closeMobileMenu} to="booking" smooth={true} duration={500}> Services </Link>
             </li>
             <li>
-              <Link onClick={closeMobileMenu} to="about" smooth={true} duration={500}> About </Link>
+              <Link onClick={closeMobileMenu} to="about" smooth={true} duration={500}> About Us </Link>
             </li>
             <li>
-              <Link onClick={closeMobileMenu} to="testimonials" smooth={true} duration={500}> Testimonials </Link>
+              <Link onClick={closeMobileMenu} to="testimonials" smooth={true} duration={500}> The Team </Link>
             </li>
             <li>
               <RouterLink to="/login" onClick={closeMobileMenu}> Login </RouterLink>

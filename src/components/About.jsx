@@ -1,10 +1,10 @@
 import React from "react";
-import BlackCarPng from "../car_black2.jpg";
-import WhiteCarPng from "../car_white2.jpg";
+import BlackCarPng from "../images/car_black2.jpg";
+import WhiteCarPng from "../images/car_white2.jpg";
 
 const About = ({ theme }) => {
   return (
-    <div className="dark:bg-black bg-white dark:text-white sm:min-h-[600px] sm:grid sm:place-items-center duration-300">
+    <div className="dark:bg-black bg-white dark:text-white sm:min-h-[600px] h-screen sm:grid sm:place-items-center duration-300">
       <div className="container">
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 place-items-center">
           <div

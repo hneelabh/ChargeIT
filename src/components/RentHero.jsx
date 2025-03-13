@@ -1,5 +1,5 @@
 import React from "react";
-import BookImage from "../blue_car.webp"
+import BookImage from "../images/blue_car.webp"
 import "aos/dist/aos.css";
 
 const RentHero = () => {

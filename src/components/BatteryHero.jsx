@@ -1,5 +1,5 @@
 import React from "react";
-import BatterySwapImg from "../battery-swap.jpg";
+import BatterySwapImg from "../images/battery-swap.jpg";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 

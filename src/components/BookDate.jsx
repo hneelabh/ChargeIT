@@ -11,6 +11,8 @@ import {
 } from "firebase/database";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { db } from "../firebase-config.js";
+import { collection, addDoc } from "firebase/firestore";
 
 function BookDate() {
   const navigate = useNavigate();
@@ -59,11 +61,47 @@ function BookDate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form Data:", {
+      name,
+      vehicleNumber,
+      bookTime,
+      selectedLocation,
+    });
 
     if (!name || !vehicleNumber || !bookTime || !selectedLocation) {
       alert("Please fill all the fields");
-    } else {
-      await checkAndWriteUserData();
+      return;
+    }
+
+    try {
+      await checkAndWriteUserData(); // Ensure other related data is written
+
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (user) {
+        const db = getDatabase();
+        const sanitizedEmail = user.email.replace(/\./g, "_"); // Convert email to a valid key
+        const bookingRef = ref(db, `bookings/${sanitizedEmail}`);
+
+        await push(bookingRef, {
+          userId: user.uid,
+          name,
+          vehicleNumber,
+          bookTime,
+          selectedLocation,
+          date: new Date().toISOString(),
+          status: "Booked",
+          details: `Booking at ${selectedLocation} for ${bookTime}`,
+        });
+
+        alert("Booking confirmed and saved to history!");
+      } else {
+        alert("User is not logged in!");
+      }
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      alert("Something went wrong. Please try again.");
     }
   };
 
@@ -87,7 +125,6 @@ function BookDate() {
       return;
     }
 
-    // Check if the user has already booked with the same vehicle number
     const querySnapshot = await get(
       query(bookingsRef, orderByChild("vehicleNumber"), equalTo(vehicleNumber))
     );
@@ -100,7 +137,6 @@ function BookDate() {
       return;
     }
 
-    // Check if there is an existing booking at the same time and location
     const queryForExistingBooking = await get(
       query(
         bookingsRef,
@@ -124,7 +160,6 @@ function BookDate() {
       }
     }
 
-    // Create a new booking
     const newBookingRef = push(bookingsRef);
     const newBookingKey = newBookingRef.key;
     await set(ref(db, `/bookings/${newBookingKey}`), {
@@ -142,21 +177,18 @@ function BookDate() {
     redirectToCancel();
   };
 
-  // Function to generate time options
   const generateTimeOptions = () => {
     const options = [];
-    const currentHour = new Date().getHours(); // Get the current hour
+    const currentHour = new Date().getHours();
     const nextDay = new Date();
-    nextDay.setDate(nextDay.getDate() + 1); // Get the date for the next day
+    nextDay.setDate(nextDay.getDate() + 1);
 
-    // Loop through hours from current hour to 23 (end of current day)
     for (let hour = currentHour; hour < 24; hour++) {
       const startTime = `${hour}:00`;
       const endTime = `${hour + 1}:00`;
       options.push(`${startTime} - ${endTime}`);
     }
 
-    // Loop through hours from 0 (beginning of next day) to 1 (end of next day)
     for (let hour = 0; hour < currentHour; hour++) {
       const startTime = `${hour}:00`;
       const endTime = `${hour + 1}:00`;
@@ -171,9 +203,7 @@ function BookDate() {
   };
 
   return (
-    <div
-      className="min-h-screen bg-black flex items-center justify-center"
-    >
+    <div className="min-h-screen bg-black flex items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
         <div className="text-center mb-6">
           <p className="text-lg font-semibold">Time you would like to Book</p>

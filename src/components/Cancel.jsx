@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getDatabase, ref, get, remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import bgImage from "../bg.jpg";
+import bgImage from "../images/bg.jpg";
 
 function Cancel() {
   const navigate = useNavigate();
